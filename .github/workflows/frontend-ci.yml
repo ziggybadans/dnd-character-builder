@@ -2,7 +2,7 @@ name: Frontend CI
 
 on:
   push:
-    branches: [ main, staging, develop ]
+    branches: [ main, staging, develop, 'feature/*' ]
     paths:
       - 'frontend/**'
       - '.github/workflows/frontend-ci.yml'
@@ -29,20 +29,29 @@ jobs:
         cache: 'npm'
         cache-dependency-path: './frontend/package-lock.json'
 
+    - name: Cache node modules
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
     - name: Install dependencies
       run: npm ci
 
-    - name: Run linting
+    - name: Run linting and type checking
       run: |
-        npm run lint
+        npm run lint -- --max-warnings 0
         npm run type-check
 
     - name: Run tests with coverage
-      run: npm run test:coverage
+      run: npm run test:coverage -- --maxWorkers=2 --ci
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         file: ./frontend/coverage/coverage-final.json
         flags: frontend
         fail_ci_if_error: true
+        token: ${{ secrets.CODECOV_TOKEN }}

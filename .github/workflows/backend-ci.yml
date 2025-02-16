@@ -2,7 +2,7 @@ name: Backend CI
 
 on:
   push:
-    branches: [ main, staging, develop ]
+    branches: [ main, staging, develop, 'feature/*' ]
     paths:
       - 'backend/**'
       - '.github/workflows/backend-ci.yml'
@@ -27,6 +27,21 @@ jobs:
       with:
         python-version: '3.12'
         cache: 'pip'
+        cache-dependency-path: './backend/requirements.txt'
+
+    - name: Cache pip packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Cache pre-commit hooks
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pre-commit
+        key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
 
     - name: Install dependencies
       run: |
@@ -41,13 +56,13 @@ jobs:
 
     - name: Run tests with coverage
       run: |
-        coverage run -m pytest
+        pytest --durations=10 -v --cov=app --cov-report=xml
         coverage report
-        coverage xml
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         file: ./backend/coverage.xml
         flags: backend
         fail_ci_if_error: true
+        token: ${{ secrets.CODECOV_TOKEN }}
