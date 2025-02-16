@@ -7,3 +7,6 @@
 2025-02-16 17:26:11,978 - dnd_character_builder - INFO - Incoming GET request to http://localhost:8000/health
 2025-02-16 17:26:11,979 - dnd_character_builder - INFO - Health check endpoint called
 2025-02-16 17:26:11,979 - dnd_character_builder - INFO - Returning 200 response
+2025-02-16 21:59:27,984 - dnd_character_builder - INFO - Incoming GET request to http://testserver/health
+2025-02-16 21:59:27,985 - dnd_character_builder - INFO - Health check endpoint called
+2025-02-16 21:59:27,985 - dnd_character_builder - INFO - Returning 200 response
