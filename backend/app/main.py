@@ -1,8 +1,11 @@
+from typing import Awaitable, Callable
+
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy.exc import SQLAlchemyError
+from starlette.responses import Response
 
 from .config import get_settings
 from .database import Base, engine
@@ -27,7 +30,7 @@ app = FastAPI(
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.BACKEND_CORS_ORIGINS,
+    allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -40,7 +43,9 @@ app.add_exception_handler(Exception, generic_exception_handler)
 
 
 @app.middleware("http")
-async def log_requests(request: Request, call_next):
+async def log_requests(
+    request: Request, call_next: Callable[[Request], Awaitable[Response]]
+) -> Response:
     """Log all incoming requests."""
     logger.info(f"Incoming {request.method} request to {request.url}")
     response = await call_next(request)
@@ -48,11 +53,25 @@ async def log_requests(request: Request, call_next):
     return response
 
 
+@app.get("/")
+async def root() -> JSONResponse:
+    """Root endpoint.
+
+    Returns:
+        JSONResponse: Basic API information.
+    """
+    return JSONResponse({"message": "D&D Character Builder API", "version": "1.0.0"})
+
+
 @app.get("/health")
-async def health_check():
-    """Health check endpoint to verify API is running."""
+async def health_check() -> JSONResponse:
+    """Health check endpoint.
+
+    Returns:
+        JSONResponse: Health status of the API.
+    """
     logger.info("Health check endpoint called")
-    return JSONResponse(content={"status": "healthy", "message": "API is running"}, status_code=200)
+    return JSONResponse({"status": "healthy", "message": "API is running"})
 
 
 if __name__ == "__main__":
