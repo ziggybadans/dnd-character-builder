@@ -19,6 +19,14 @@ const config: Config = {
       statements: 80,
     },
   },
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!src/**/*.d.ts',
+    '!src/main.tsx',
+    '!src/vite-env.d.ts'
+  ],
+  coverageReporters: ['json', 'lcov', 'text', 'clover'],
+  coverageDirectory: 'coverage'
 };
 
 export default config;
