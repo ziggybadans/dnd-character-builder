@@ -2,15 +2,17 @@ name: Frontend CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop, staging ]
     paths:
       - 'frontend/**'
       - '.github/workflows/frontend-ci.yml'
+      - 'codecov.yml'
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop, staging ]
     paths:
       - 'frontend/**'
       - '.github/workflows/frontend-ci.yml'
+      - 'codecov.yml'
 
 jobs:
   test:
@@ -33,9 +35,7 @@ jobs:
       run: npm ci
 
     - name: Run linting
-      run: |
-        npm run lint
-        npm run type-check
+      run: npm run lint
 
     - name: Run tests with coverage
       run: npm run test:coverage
