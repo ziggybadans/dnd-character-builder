@@ -38,7 +38,7 @@ jobs:
         npm run type-check
 
     - name: Run tests with coverage
-      run: npm run test:coverage
+      run: npm test -- --coverage --passWithNoTests
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3

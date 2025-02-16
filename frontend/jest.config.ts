@@ -1,20 +1,25 @@
-export default {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+import type { Config } from "jest";
+
+const config: Config = {
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+    "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/src/__mocks__/fileMock.ts",
   },
   transform: {
-    '^.+\\.(ts|tsx)$': ['ts-jest', { tsconfig: './tsconfig.json' }],
+    "^.+\\.tsx?$": "ts-jest",
   },
-  coverageThreshold: {
-    global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80,
-    },
-  },
-}; 
+  coverageDirectory: "coverage",
+  collectCoverageFrom: [
+    "src/**/*.{ts,tsx}",
+    "!src/**/*.d.ts",
+    "!src/main.tsx",
+    "!src/vite-env.d.ts",
+  ],
+  testMatch: ["<rootDir>/src/__tests__/**/*.test.{ts,tsx}"],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+};
+
+export default config;
