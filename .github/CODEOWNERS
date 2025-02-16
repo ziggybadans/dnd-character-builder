@@ -1,3 +1,9 @@
+# Global owner for all files
+* @ziggybadans
+
+# This ensures you get notified of all changes
+# You can add more specific rules if you collaborate with others in the future
+
 # Global owners (if no other rule matches)
 * @project-admin
 
