@@ -57,7 +57,7 @@ jobs:
     - name: Install dependencies
       run: |
         npm ci
-        npm install -D ts-node
+        npm install -D ts-node ts-jest
 
     - name: Run tests with coverage
       run: npm test -- --coverage --no-watch
