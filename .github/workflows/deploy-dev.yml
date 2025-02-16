@@ -39,7 +39,11 @@ jobs:
       working-directory: ./frontend
       run: npm run build
 
-    # Add deployment steps here once we have a deployment target
-    # For now, this is a placeholder that will succeed
-    - name: Deploy
-      run: echo "Deployment would happen here"
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        working-directory: ./
+        vercel-args: '--prod'
