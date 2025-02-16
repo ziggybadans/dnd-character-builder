@@ -1,0 +1,61 @@
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from sqlalchemy.exc import SQLAlchemyError
+
+from .config import get_settings
+from .database import Base, engine
+from .utils.error_handlers import (
+    generic_exception_handler,
+    sqlalchemy_exception_handler,
+    validation_exception_handler,
+)
+from .utils.logger import logger
+
+settings = get_settings()
+
+# Create database tables
+Base.metadata.create_all(bind=engine)
+
+app = FastAPI(
+    title="D&D Character Builder API",
+    description="API for managing D&D 5E characters and sourcebooks",
+    version="0.1.0",
+)
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.BACKEND_CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Add exception handlers
+app.add_exception_handler(RequestValidationError, validation_exception_handler)
+app.add_exception_handler(SQLAlchemyError, sqlalchemy_exception_handler)
+app.add_exception_handler(Exception, generic_exception_handler)
+
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    """Log all incoming requests."""
+    logger.info(f"Incoming {request.method} request to {request.url}")
+    response = await call_next(request)
+    logger.info(f"Returning {response.status_code} response")
+    return response
+
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint to verify API is running."""
+    logger.info("Health check endpoint called")
+    return JSONResponse(content={"status": "healthy", "message": "API is running"}, status_code=200)
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)
