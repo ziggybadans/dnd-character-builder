@@ -1,0 +1,39 @@
+# Global owner for all files
+* @ziggybadans
+
+# This ensures you get notified of all changes
+# You can add more specific rules if you collaborate with others in the future
+
+# Global owners (if no other rule matches)
+* @project-admin
+
+# Backend code
+/backend/ @backend-team
+/backend/app/models/ @database-team
+/backend/app/schemas/ @database-team
+/backend/app/services/ @backend-team
+/backend/tests/ @backend-team @qa-team
+
+# Frontend code
+/frontend/ @frontend-team
+/frontend/src/components/ @frontend-team
+/frontend/src/pages/ @frontend-team
+/frontend/tests/ @frontend-team @qa-team
+
+# Documentation
+/docs/ @technical-writers @project-admin
+*.md @technical-writers
+
+# Configuration files
+*.json @devops-team
+*.yaml @devops-team
+*.toml @devops-team
+/backend/requirements.txt @devops-team
+/frontend/package.json @devops-team
+
+# Security-sensitive files
+/backend/app/config.py @security-team
+/backend/app/utils/security.py @security-team
+
+# Note: Replace the team names above with actual GitHub usernames or teams
+# Example: * @actual-username 
