@@ -16,6 +16,11 @@ export default [
         ecmaFeatures: {
           jsx: true
         }
+      },
+      globals: {
+        document: 'readonly',
+        window: 'readonly',
+        global: 'readonly'
       }
     },
     plugins: {
@@ -28,11 +33,25 @@ export default [
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off'
+      'react/prop-types': 'off',
+      '@typescript-eslint/no-explicit-any': 'off'
     },
     settings: {
       react: {
         version: 'detect'
+      }
+    }
+  },
+  {
+    files: ['**/*.test.{ts,tsx}', '**/setupTests.ts'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        jest: 'readonly'
       }
     }
   }
