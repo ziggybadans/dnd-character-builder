@@ -7,6 +7,14 @@
 - Set up Git repository with contribution guidelines and issue templates
 - Created comprehensive technical outline detailing project structure and implementation plans
 
+### CI/CD Setup
+- Created GitHub Actions workflows:
+  - Backend CI workflow for testing and linting
+  - Frontend CI workflow for testing and linting
+  - Development deployment workflow
+- Configured code coverage reporting with Codecov
+- Set up development environment deployment pipeline
+
 ### Stage 0: Project Setup and Infrastructure
 #### Backend Foundation
 - Initialized FastAPI application with SQLite database
