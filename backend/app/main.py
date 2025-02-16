@@ -1,8 +1,11 @@
+from typing import Awaitable, Callable
+
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy.exc import SQLAlchemyError
+from starlette.responses import Response
 
 from .config import get_settings
 from .database import Base, engine
@@ -27,7 +30,7 @@ app = FastAPI(
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.BACKEND_CORS_ORIGINS,
+    allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -40,7 +43,9 @@ app.add_exception_handler(Exception, generic_exception_handler)
 
 
 @app.middleware("http")
-async def log_requests(request: Request, call_next):
+async def log_requests(
+    request: Request, call_next: Callable[[Request], Awaitable[Response]]
+) -> Response:
     """Log all incoming requests."""
     logger.info(f"Incoming {request.method} request to {request.url}")
     response = await call_next(request)

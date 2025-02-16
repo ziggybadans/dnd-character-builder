@@ -26,6 +26,7 @@ class Settings(BaseSettings):
 
     # CORS
     CORS_ORIGINS: list[str] = ["http://localhost:3000"]
+    BACKEND_CORS_ORIGINS: list[str] = CORS_ORIGINS  # For backward compatibility
 
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=True)
 

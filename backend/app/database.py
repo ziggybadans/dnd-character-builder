@@ -1,8 +1,12 @@
-from app.config import settings
+from typing import Generator
+
+from app.config import get_settings
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+
+settings = get_settings()
 
 # Create SQLAlchemy engine
 engine = create_engine(
@@ -16,7 +20,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 
-def get_db() -> Session:
+def get_db() -> Generator[Session, None, None]:
     """Get a database session.
 
     Yields:
