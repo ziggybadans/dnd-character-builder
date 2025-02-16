@@ -48,11 +48,25 @@ async def log_requests(request: Request, call_next):
     return response
 
 
+@app.get("/")
+async def root() -> JSONResponse:
+    """Root endpoint.
+
+    Returns:
+        JSONResponse: Basic API information.
+    """
+    return JSONResponse({"message": "D&D Character Builder API", "version": "1.0.0"})
+
+
 @app.get("/health")
-async def health_check():
-    """Health check endpoint to verify API is running."""
+async def health_check() -> JSONResponse:
+    """Health check endpoint.
+
+    Returns:
+        JSONResponse: Health status of the API.
+    """
     logger.info("Health check endpoint called")
-    return JSONResponse(content={"status": "healthy", "message": "API is running"}, status_code=200)
+    return JSONResponse({"status": "healthy", "message": "API is running"})
 
 
 if __name__ == "__main__":
