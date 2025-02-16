@@ -1,60 +1,44 @@
-# Change Description
-
-Please provide a summary of the changes and which issue is addressed.
-
-Fixes # (issue)
+## Description
+<!-- Describe your changes in detail -->
 
 ## Type of Change
+<!-- Mark relevant items with an 'x' -->
+- [ ] 🚀 New feature (non-breaking change which adds functionality)
+- [ ] 🛠️ Bug fix (non-breaking change which fixes an issue)
+- [ ] 📝 Documentation update
+- [ ] 💄 UI/UX update
+- [ ] 🔨 Refactor/Technical debt
+- [ ] ⚡ Performance improvement
+- [ ] 🧪 Test update
+- [ ] 🔧 Configuration change
+- [ ] ⚠️ Breaking change (fix or feature that would cause existing functionality to not work as expected)
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] Documentation update
+## Target Branch
+<!-- Mark the target branch -->
+- [ ] main (production)
+- [ ] staging (pre-production)
+- [ ] develop (development)
 
-## Self-Review Checklist
+## Testing
+<!-- Describe the tests you've added or modified -->
+- [ ] Unit tests added/updated
+- [ ] Integration tests added/updated
+- [ ] Manual testing performed
 
-Code Quality:
-- [ ] The code follows the project's style guidelines
-- [ ] I have performed a thorough self-review of the code
-- [ ] Complex logic is documented and clear
-- [ ] No unnecessary code or dependencies added
-- [ ] Error handling is implemented appropriately
+## Checklist
+<!-- Mark completed items with an 'x' -->
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my own code
+- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have made corresponding changes to the documentation
+- [ ] My changes generate no new warnings
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] New and existing unit tests pass locally with my changes
+- [ ] Any dependent changes have been merged and published
+- [ ] I have checked my code and corrected any misspellings
 
-Testing:
-- [ ] New and existing unit tests pass
-- [ ] Integration tests pass
-- [ ] Manual testing completed
-- [ ] Edge cases have been considered and tested
+## Screenshots/Videos
+<!-- If applicable, add screenshots or videos to help explain your changes -->
 
-Documentation:
-- [ ] Code includes necessary comments
-- [ ] Documentation has been updated
-- [ ] API documentation is current
-- [ ] README updates made if needed
-
-Performance & Security:
-- [ ] Performance implications have been considered
-- [ ] Security implications have been considered
-- [ ] No sensitive data is exposed
-- [ ] Error messages are user-friendly but not revealing
-
-Dependencies & Compatibility:
-- [ ] All dependencies are necessary and up to date
-- [ ] Changes are compatible with existing features
-- [ ] Database migrations are included if needed
-
-## Implementation Notes
-
-Describe any important implementation details, architectural decisions, or trade-offs made.
-
-## Testing Notes
-
-Describe the testing approach and any specific test cases considered.
-
-## Screenshots
-
-If applicable, add screenshots to show the changes.
-
-## Future Considerations
-
-Note any future improvements or technical debt to be addressed later. 
+## Additional Notes
+<!-- Add any additional notes or context about the PR here --> 
