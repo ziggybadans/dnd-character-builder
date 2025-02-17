@@ -102,6 +102,17 @@ dnd-character-builder/
 
 ### Stage 1: Character Creation
 
+0. Branching Strategy
+
+   - Main branch: `feature/stage-1-character-creation` (from `develop`)
+   - Sub-feature branches:
+     - `feature/data-models`: Core data models and schemas
+     - `feature/core-services`: Character creation and calculation services
+     - `feature/api-endpoints`: API implementation
+     - `feature/frontend-wizard`: Character creation UI
+     - `feature/testing`: Test implementation
+   - Workflow: Develop and test components independently → merge to main feature branch → integrate in `develop` → deploy through `staging` to `main`
+
 1. Data Models and Schemas
 
    - Create SQLAlchemy models:
