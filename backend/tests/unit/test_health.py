@@ -3,7 +3,7 @@
 from app.main import app  # type: ignore
 from fastapi.testclient import TestClient  # type: ignore
 
-client = TestClient(app=app)
+client = TestClient(app)
 
 
 def test_health_check() -> None:
