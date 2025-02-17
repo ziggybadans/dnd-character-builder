@@ -1,7 +1,7 @@
 fastapi==0.104.0
-uvicorn==0.24.0
+uvicorn==0.34.0
 sqlalchemy==2.0.0
-pydantic==2.4.0
+pydantic==2.10.6
 pydantic-settings==2.1.0
 python-jose==3.3.0
 passlib==1.7.4
@@ -10,9 +10,9 @@ aiofiles==23.2.1
 pytest==7.4.3
 pytest-asyncio==0.21.1
 httpx==0.25.0
-coverage==7.3.2
+coverage==7.6.12
 black==24.3.0
 isort==5.12.0
-mypy==1.6.1
+mypy==1.15.0
 alembic==1.13.1
 python-dotenv==1.0.0
