@@ -47,3 +47,10 @@ coverage/
 .DS_Store
 Thumbs.db
 .vercel
+
+# Logs
+logs/
+*.log
+backend/logs/
+frontend/logs/
+app.log*

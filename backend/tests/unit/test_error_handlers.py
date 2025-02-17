@@ -15,12 +15,6 @@ from pytest import MarkDecorator
 from sqlalchemy.exc import SQLAlchemyError
 
 
-class TestModel(BaseModel):
-    """Test model for validation errors."""
-
-    name: str = Field(..., min_length=3)
-
-
 def typed_async_test(func: Callable[..., Any]) -> Any:
     """Type-aware decorator for async test functions."""
     mark_asyncio: MarkDecorator = pytest.mark.asyncio
@@ -30,6 +24,12 @@ def typed_async_test(func: Callable[..., Any]) -> Any:
 @typed_async_test
 async def test_validation_exception_handler() -> None:
     """Test handling of validation errors."""
+
+    class TestModel(BaseModel):
+        """Test model for validation errors."""
+
+        name: str = Field(..., min_length=3)
+
     request = Request({"type": "http", "method": "GET", "url": "http://test"})
 
     # Create a validation error from raw data
@@ -50,25 +50,25 @@ async def test_validation_exception_handler() -> None:
 
 @typed_async_test
 async def test_sqlalchemy_exception_handler() -> None:
-    """Test handling of database errors."""
+    """Test handling of SQLAlchemy errors."""
     request = Request({"type": "http", "method": "GET", "url": "http://test"})
-    exc = SQLAlchemyError("Database connection failed")
+    exc = SQLAlchemyError("Test database error")
     response = await sqlalchemy_exception_handler(request, exc)
 
     assert response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR
     content = response.body.decode()
     assert "Database error occurred" in content
-    assert "Database connection failed" in content
+    assert "Test database error" in content
 
 
 @typed_async_test
 async def test_generic_exception_handler() -> None:
     """Test handling of generic exceptions."""
     request = Request({"type": "http", "method": "GET", "url": "http://test"})
-    exc = Exception("Unexpected error")
+    exc = Exception("Test generic error")
     response = await generic_exception_handler(request, exc)
 
     assert response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR
     content = response.body.decode()
     assert "An unexpected error occurred" in content
-    assert "Unexpected error" in content
+    assert "Test generic error" in content
