@@ -147,15 +147,3 @@ While this is currently a solo project, the following practices are maintained t
 ## License
 
 This project is licensed under [LICENSE]. All contributions must be compatible with this license.
-
-## Code Style Workflow
-
-Before committing any Python code changes:
-
-```bash
-# From the backend directory
-black --check .
-isort --check-only .
-mypy .
-pytest
-```
