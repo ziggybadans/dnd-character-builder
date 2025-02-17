@@ -121,3 +121,15 @@
 2025-02-17 15:30:14,777 - dnd_character_builder - INFO - Returning 200 response
 2025-02-17 15:30:14,779 - dnd_character_builder - INFO - Incoming OPTIONS request to http://testserver/
 2025-02-17 15:30:14,779 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 17:20:55,915 - dnd_character_builder - INFO - Incoming GET request to http://testserver/health
+2025-02-17 17:20:55,915 - dnd_character_builder - INFO - Health check endpoint called
+2025-02-17 17:20:55,915 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 17:20:55,917 - dnd_character_builder - INFO - Incoming GET request to http://testserver/
+2025-02-17 17:20:55,917 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 17:20:55,919 - dnd_character_builder - INFO - Incoming GET request to http://testserver/health
+2025-02-17 17:20:55,919 - dnd_character_builder - INFO - Health check endpoint called
+2025-02-17 17:20:55,919 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 17:20:55,920 - dnd_character_builder - INFO - Incoming GET request to http://testserver/
+2025-02-17 17:20:55,921 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 17:20:55,922 - dnd_character_builder - INFO - Incoming OPTIONS request to http://testserver/
+2025-02-17 17:20:55,922 - dnd_character_builder - INFO - Returning 200 response
