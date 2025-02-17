@@ -37,8 +37,9 @@ jobs:
 
     - name: Upload backend coverage to Codecov
       uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v4.0.1
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
         files: coverage.xml
         flags: backend
         fail_ci_if_error: true
@@ -68,8 +69,9 @@ jobs:
 
     - name: Upload frontend coverage to Codecov
       uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v4.0.1
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
         files: coverage/coverage-final.json
         flags: frontend
         fail_ci_if_error: true
