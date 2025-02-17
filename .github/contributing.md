@@ -1,9 +1,7 @@
 # D&D Character Builder - Development Guidelines
-
 This document outlines the development practices and guidelines for the D&D Character Builder project. While this is currently a solo project, these guidelines ensure consistent code quality and maintainable development practices.
 
 ## Branch Strategy
-
 The project uses a multi-branch workflow:
 - `main`: Production-ready code
 - `staging`: Pre-production testing
@@ -16,7 +14,6 @@ The project uses a multi-branch workflow:
 - Releases: `release/version-number`
 
 ## Development Workflow
-
 1. Create a new branch from `develop`
 2. Make changes following the code style guidelines
 3. Run tests and ensure all checks pass
@@ -25,7 +22,6 @@ The project uses a multi-branch workflow:
 6. After testing, merge to `main` for production
 
 ### Before Merging
-
 - [ ] Update documentation if needed
 - [ ] Add/update tests as needed
 - [ ] Run the test suite
@@ -79,7 +75,6 @@ Closes #123
 - Document components with JSDoc
 
 ## Testing
-
 - Write unit tests for new features
 - Update existing tests when modifying features
 - Aim for 80%+ coverage
@@ -87,7 +82,6 @@ Closes #123
 - Run the full test suite before merging to `staging`
 
 ## Documentation
-
 - Keep README.md up to date
 - Document new features as they're implemented
 - Maintain API documentation
@@ -96,7 +90,6 @@ Closes #123
 - Document any complex logic or algorithms
 
 ## Version Control Best Practices
-
 1. Keep commits focused and atomic
 2. Write clear commit messages
 3. Regularly push changes to remote
@@ -104,7 +97,6 @@ Closes #123
 5. Clean up branches after merging
 
 ## Project Organization
-
 - Keep the project structure clean and organized
 - Follow the established directory structure
 - Use meaningful file names
@@ -112,7 +104,6 @@ Closes #123
 - Maintain separation of concerns
 
 ## Performance Considerations
-
 - Optimize database queries
 - Implement caching where appropriate
 - Minimize frontend bundle size
@@ -120,7 +111,6 @@ Closes #123
 - Monitor and optimize API response times
 
 ## Security Best Practices
-
 - Keep dependencies up to date
 - Never commit sensitive data
 - Use environment variables for secrets
@@ -128,7 +118,6 @@ Closes #123
 - Follow security best practices for authentication
 
 ## Future Collaboration Considerations
-
 While this is currently a solo project, the following practices are maintained to facilitate potential future collaboration:
 - Clear documentation
 - Consistent coding style
@@ -137,5 +126,15 @@ While this is currently a solo project, the following practices are maintained t
 - Detailed commit history
 
 ## License
+This project is licensed under [LICENSE]. All contributions must be compatible with this license.
 
-This project is licensed under [LICENSE]. All contributions must be compatible with this license. 
+## Code Style Workflow
+Before committing any Python code changes:
+
+```bash
+# From the backend directory
+black --check .
+isort --check-only .
+mypy .
+pytest
+``` 
