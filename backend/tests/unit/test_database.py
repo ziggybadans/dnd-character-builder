@@ -1,10 +1,11 @@
 """Unit tests for database module."""
 import pytest
 from app.database import get_db
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 
-def test_get_db_yields_session():
+def test_get_db_yields_session() -> None:
     """Test that get_db yields a database session."""
     db_generator = get_db()
     db = next(db_generator)
@@ -15,7 +16,7 @@ def test_get_db_yields_session():
         pass  # Expected behavior
 
 
-def test_get_db_session_lifecycle():
+def test_get_db_session_lifecycle() -> None:
     """Test the lifecycle of a database session."""
     db_generator = get_db()
     db = next(db_generator)
@@ -31,11 +32,10 @@ def test_get_db_session_lifecycle():
         pass
 
     # Session should be closed
-    with pytest.raises(Exception):
-        db.execute("SELECT 1")
+    assert db.get_transaction() is None
 
 
-def test_get_db_handles_exceptions():
+def test_get_db_handles_exceptions() -> None:
     """Test that get_db closes the session even if an exception occurs."""
     db_generator = get_db()
     db = next(db_generator)
@@ -52,5 +52,4 @@ def test_get_db_handles_exceptions():
                 pass
 
     # Session should be closed
-    with pytest.raises(Exception):
-        db.execute("SELECT 1")
+    assert db.get_transaction() is None

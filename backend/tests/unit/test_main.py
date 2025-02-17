@@ -8,21 +8,21 @@ from fastapi.testclient import TestClient
 client = TestClient(app)
 
 
-def test_root_endpoint():
+def test_root_endpoint() -> None:
     """Test the root endpoint returns correct response."""
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"message": "D&D Character Builder API", "version": "1.0.0"}
 
 
-def test_health_check_endpoint():
+def test_health_check_endpoint() -> None:
     """Test the health check endpoint returns correct response."""
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json() == {"status": "healthy", "message": "API is running"}
 
 
-def test_log_requests_middleware():
+def test_log_requests_middleware() -> None:
     """Test that the log requests middleware processes requests correctly."""
     response = client.get("/")  # The middleware will log this request
     assert response.status_code == 200  # Verify the request was processed
@@ -33,7 +33,7 @@ def test_log_requests_middleware():
     assert "message" in response.json()
 
 
-def test_cors_middleware():
+def test_cors_middleware() -> None:
     """Test that CORS middleware is properly configured."""
     response = client.options(
         "/",
@@ -49,7 +49,7 @@ def test_cors_middleware():
     assert "access-control-allow-headers" in response.headers
 
 
-def test_main_startup():
+def test_main_startup() -> None:
     """Test the main application startup code."""
     with patch("uvicorn.run") as mock_run:
         # Execute the __main__ block code

@@ -18,7 +18,7 @@ class TestModel(BaseModel):
 
 
 @pytest.mark.asyncio
-async def test_validation_exception_handler():
+async def test_validation_exception_handler() -> None:
     """Test handling of validation errors."""
     request = Request({"type": "http", "method": "GET", "url": "http://test"})
 
@@ -39,7 +39,7 @@ async def test_validation_exception_handler():
 
 
 @pytest.mark.asyncio
-async def test_sqlalchemy_exception_handler():
+async def test_sqlalchemy_exception_handler() -> None:
     """Test handling of database errors."""
     request = Request({"type": "http", "method": "GET", "url": "http://test"})
     exc = SQLAlchemyError("Database connection failed")
@@ -52,7 +52,7 @@ async def test_sqlalchemy_exception_handler():
 
 
 @pytest.mark.asyncio
-async def test_generic_exception_handler():
+async def test_generic_exception_handler() -> None:
     """Test handling of generic exceptions."""
     request = Request({"type": "http", "method": "GET", "url": "http://test"})
     exc = Exception("Unexpected error")
