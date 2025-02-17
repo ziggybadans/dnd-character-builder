@@ -1,4 +1,4 @@
-from typing import Awaitable, Callable
+from typing import Any, Awaitable, Callable
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -42,10 +42,11 @@ app.add_exception_handler(SQLAlchemyError, sqlalchemy_exception_handler)
 app.add_exception_handler(Exception, generic_exception_handler)
 
 
-@app.middleware("http")
-async def log_requests(
-    request: Request, call_next: Callable[[Request], Awaitable[Response]]
-) -> Response:
+MiddlewareCallable = Callable[[Request], Awaitable[Response]]
+
+
+@app.middleware("http")  # type: ignore[misc]
+async def log_requests(request: Request, call_next: MiddlewareCallable) -> Response:
     """Log all incoming requests."""
     logger.info(f"Incoming {request.method} request to {request.url}")
     response = await call_next(request)
@@ -53,7 +54,7 @@ async def log_requests(
     return response
 
 
-@app.get("/")
+@app.get("/")  # type: ignore[misc]
 async def root() -> JSONResponse:
     """Root endpoint.
 
@@ -63,7 +64,7 @@ async def root() -> JSONResponse:
     return JSONResponse({"message": "D&D Character Builder API", "version": "1.0.0"})
 
 
-@app.get("/health")
+@app.get("/health")  # type: ignore[misc]
 async def health_check() -> JSONResponse:
     """Health check endpoint.
 

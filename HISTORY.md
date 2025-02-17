@@ -3,12 +3,15 @@
 ## February 16, 2024
 
 ### Project Initialization and Setup
+
 - Created initial project structure and documentation
 - Set up Git repository with contribution guidelines and issue templates
 - Created comprehensive technical outline detailing project structure and implementation plans
 
 ### Stage 0: Project Setup and Infrastructure
+
 #### Backend Foundation
+
 - Initialized FastAPI application with SQLite database
 - Set up SQLAlchemy for database management
 - Configured logging and error handling
@@ -22,6 +25,7 @@
 - Added development dependencies and requirements.txt
 
 #### Frontend Foundation
+
 - Set up Vite + React + TypeScript project
 - Configured Material-UI with custom D&D theme
 - Set up React Router for navigation
@@ -36,6 +40,7 @@
 - Set up testing infrastructure with Jest and React Testing Library
 
 ### Development Environment
+
 - Set up Python 3.12 virtual environment
 - Configured Node.js development environment
 - Set up linting and formatting tools
@@ -48,6 +53,7 @@
   - Issue templates
 
 ### Current Status
+
 - Backend server running on http://localhost:8000
 - Frontend development server running on http://localhost:5173
 - Health check endpoint operational
@@ -55,11 +61,13 @@
 - Development environment fully configured
 
 ### Known Issues
+
 - Pre-commit hooks failing due to missing type stubs (Issue #1)
 
 ## Next Steps
+
 - Implement Stage 1: Character Creation
   - Create data models for races, classes, and backgrounds
   - Implement character creation endpoints
   - Develop character creation wizard UI
-  - Add validation and calculation services 
+  - Add validation and calculation services

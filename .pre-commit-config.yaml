@@ -26,7 +26,10 @@ repos:
     rev: v1.8.0
     hooks:
       - id: mypy
-        additional_dependencies: [types-all]
+        args: [--config-file=backend/setup.cfg]
+        additional_dependencies:
+          - setuptools>=65.5.1
+          - types-setuptools
         exclude: ^tests/
 
   - repo: https://github.com/pre-commit/mirrors-prettier
@@ -41,8 +44,10 @@ repos:
       - id: eslint
         files: \.[jt]sx?$
         types: [file]
+        args: [--config, frontend/eslint.config.js]
         additional_dependencies:
           - eslint
           - '@typescript-eslint/parser'
           - '@typescript-eslint/eslint-plugin'
-          - eslint-plugin-react 
+          - eslint-plugin-react
+          - eslint-config-prettier

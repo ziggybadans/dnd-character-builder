@@ -3,7 +3,7 @@ import sys
 from logging.config import fileConfig
 from pathlib import Path
 
-from alembic import context
+from alembic import context  # type: ignore
 from sqlalchemy import engine_from_config, pool
 
 # Add the parent directory to the Python path

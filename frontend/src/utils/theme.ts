@@ -1,47 +1,47 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: "light",
     primary: {
-      main: '#7B1FA2', // Deep purple for magical feel
-      light: '#9C27B0',
-      dark: '#4A148C',
+      main: "#7B1FA2", // Deep purple for magical feel
+      light: "#9C27B0",
+      dark: "#4A148C",
     },
     secondary: {
-      main: '#C62828', // Deep red for D&D
-      light: '#E53935',
-      dark: '#B71C1C',
+      main: "#C62828", // Deep red for D&D
+      light: "#E53935",
+      dark: "#B71C1C",
     },
     background: {
-      default: '#F5F5F5',
-      paper: '#FFFFFF',
+      default: "#F5F5F5",
+      paper: "#FFFFFF",
     },
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontSize: '2.5rem',
+      fontSize: "2.5rem",
       fontWeight: 500,
     },
     h2: {
-      fontSize: '2rem',
+      fontSize: "2rem",
       fontWeight: 500,
     },
     h3: {
-      fontSize: '1.75rem',
+      fontSize: "1.75rem",
       fontWeight: 500,
     },
     h4: {
-      fontSize: '1.5rem',
+      fontSize: "1.5rem",
       fontWeight: 500,
     },
     h5: {
-      fontSize: '1.25rem',
+      fontSize: "1.25rem",
       fontWeight: 500,
     },
     h6: {
-      fontSize: '1rem',
+      fontSize: "1rem",
       fontWeight: 500,
     },
   },
@@ -49,7 +49,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          textTransform: 'none',
+          textTransform: "none",
           borderRadius: 8,
         },
       },
@@ -58,11 +58,11 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 12,
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         },
       },
     },
   },
 });
 
-export default theme; 
+export default theme;

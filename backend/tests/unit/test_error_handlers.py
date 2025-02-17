@@ -1,4 +1,7 @@
 """Unit tests for error handlers module."""
+
+from typing import Any, Callable
+
 import pytest
 from app.utils.error_handlers import (
     generic_exception_handler,
@@ -8,6 +11,7 @@ from app.utils.error_handlers import (
 from fastapi import Request, status
 from fastapi.exceptions import RequestValidationError
 from pydantic import BaseModel, Field, ValidationError
+from pytest import MarkDecorator
 from sqlalchemy.exc import SQLAlchemyError
 
 
@@ -17,7 +21,13 @@ class TestModel(BaseModel):
     name: str = Field(..., min_length=3)
 
 
-@pytest.mark.asyncio
+def typed_async_test(func: Callable[..., Any]) -> Any:
+    """Type-aware decorator for async test functions."""
+    mark_asyncio: MarkDecorator = pytest.mark.asyncio
+    return mark_asyncio(func)
+
+
+@typed_async_test
 async def test_validation_exception_handler() -> None:
     """Test handling of validation errors."""
     request = Request({"type": "http", "method": "GET", "url": "http://test"})
@@ -38,7 +48,7 @@ async def test_validation_exception_handler() -> None:
         assert "detail" in content
 
 
-@pytest.mark.asyncio
+@typed_async_test
 async def test_sqlalchemy_exception_handler() -> None:
     """Test handling of database errors."""
     request = Request({"type": "http", "method": "GET", "url": "http://test"})
@@ -51,7 +61,7 @@ async def test_sqlalchemy_exception_handler() -> None:
     assert "Database connection failed" in content
 
 
-@pytest.mark.asyncio
+@typed_async_test
 async def test_generic_exception_handler() -> None:
     """Test handling of generic exceptions."""
     request = Request({"type": "http", "method": "GET", "url": "http://test"})

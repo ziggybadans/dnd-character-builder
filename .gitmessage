@@ -1,6 +1,6 @@
 # <type>: <subject>
 # |<----  Using a maximum of 50 characters  ---->|
-# 
+#
 # feat: New feature
 # fix: Bug fix
 # docs: Documentation changes
@@ -13,9 +13,9 @@
 # |<----   Try to limit each line to a maximum of 72 characters   ---->|
 #
 # Breaking changes should start with 'BREAKING CHANGE:'
-# 
+#
 # Examples:
 # feat: Add character creation wizard
 # fix: Correct ability score calculation
 # docs: Update API documentation for spells
-# refactor: Simplify character validation logic 
+# refactor: Simplify character validation logic

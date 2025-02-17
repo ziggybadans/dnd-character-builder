@@ -40,4 +40,4 @@ package-lock.json text
 
 # Mark files as generated to hide them in PR diffs
 package-lock.json linguist-generated=true
-yarn.lock linguist-generated=true 
+yarn.lock linguist-generated=true
