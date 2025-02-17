@@ -245,7 +245,7 @@ def downgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_index("ix_users_id", "users", ["id"], unique=False)
-    op.create_index("ix_users_email", "users", ["email"], unique=1)
+    op.create_index("ix_users_email", "users", ["email"], unique=True)
     op.drop_index(op.f("ix_characters_name"), table_name="characters")
     op.drop_index(op.f("ix_characters_id"), table_name="characters")
     op.drop_table("characters")
