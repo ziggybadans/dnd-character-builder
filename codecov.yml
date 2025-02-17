@@ -1,0 +1,35 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: 2%
+    patch:
+      default:
+        target: 80%
+        threshold: 2%
+
+  ignore:
+    - "**/*.test.ts"
+    - "**/*.test.tsx"
+    - "**/*.spec.ts"
+    - "**/*.spec.tsx"
+    - "**/test_*.py"
+    - "**/tests/**"
+    - "**/migrations/**"
+    - "**/__init__.py"
+
+flags:
+  frontend:
+    paths:
+      - frontend/src/
+    carryforward: true
+  backend:
+    paths:
+      - backend/app/
+    carryforward: true
+
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
+  require_changes: false

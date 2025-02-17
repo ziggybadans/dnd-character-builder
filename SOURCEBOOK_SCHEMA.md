@@ -1,7 +1,9 @@
 # Sourcebook JSON Schema Documentation
+
 This document details the structure and requirements for sourcebook JSON files that can be imported into the D&D Character Builder.
 
 ## Schema Overview
+
 ```json
 {
   "metadata": {
@@ -26,6 +28,7 @@ This document details the structure and requirements for sourcebook JSON files t
 ## Detailed Schema
 
 ### Races
+
 ```json
 {
   "races": [
@@ -97,6 +100,7 @@ This document details the structure and requirements for sourcebook JSON files t
 ```
 
 ### Classes
+
 ```json
 {
   "classes": [
@@ -127,10 +131,7 @@ This document details the structure and requirements for sourcebook JSON files t
       "startingEquipment": {
         "default": [
           {
-            "choice": [
-              ["chainmail"],
-              ["leather armor", "longbow", "arrows:20"]
-            ]
+            "choice": [["chainmail"], ["leather armor", "longbow", "arrows:20"]]
           }
         ],
         "gold_alternative": "5d4*10"
@@ -160,6 +161,7 @@ This document details the structure and requirements for sourcebook JSON files t
 ```
 
 ### Backgrounds
+
 ```json
 {
   "backgrounds": [
@@ -197,12 +199,8 @@ This document details the structure and requirements for sourcebook JSON files t
             "alignments": ["Lawful"]
           }
         ],
-        "bonds": [
-          "I would die to recover an ancient relic of my faith..."
-        ],
-        "flaws": [
-          "I judge others harshly, and myself even more severely..."
-        ]
+        "bonds": ["I would die to recover an ancient relic of my faith..."],
+        "flaws": ["I judge others harshly, and myself even more severely..."]
       }
     }
   ]
@@ -210,6 +208,7 @@ This document details the structure and requirements for sourcebook JSON files t
 ```
 
 ### Spells
+
 ```json
 {
   "spells": [
@@ -261,6 +260,7 @@ This document details the structure and requirements for sourcebook JSON files t
 ```
 
 ### Equipment
+
 ```json
 {
   "equipment": {
@@ -310,11 +310,13 @@ This document details the structure and requirements for sourcebook JSON files t
 ## Validation Rules
 
 1. **Required Fields**
+
    - All objects must include required name and description fields
    - Classes must specify hitDie and primaryAbility
    - Spells must include level, school, and components
 
 2. **Value Constraints**
+
    - Ability score increases must be between -2 and +4
    - Spell levels must be 0-9
    - Equipment costs must be positive numbers
@@ -336,11 +338,13 @@ curl -X POST http://localhost:8000/api/v1/sourcebooks/import \
 ## Best Practices
 
 1. **Modularity**
+
    - Split large sourcebooks into logical chunks
    - Use consistent naming conventions
    - Include version information
 
 2. **Documentation**
+
    - Include descriptive text for all features
    - Document any special rules or exceptions
    - Provide usage examples where appropriate
@@ -348,4 +352,4 @@ curl -X POST http://localhost:8000/api/v1/sourcebooks/import \
 3. **Validation**
    - Test JSON files before import
    - Validate against the schema
-   - Check for duplicate entries 
+   - Check for duplicate entries
