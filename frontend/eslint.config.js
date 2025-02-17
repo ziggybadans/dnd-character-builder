@@ -1,58 +1,58 @@
-import js from '@eslint/js';
-import tsParser from '@typescript-eslint/parser';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import eslint from "@eslint/js";
+import tseslint from "@typescript-eslint/eslint-plugin";
+import tsparser from "@typescript-eslint/parser";
+import reactplugin from "eslint-plugin-react";
 
 export default [
-  js.configs.recommended,
+  eslint.configs.recommended,
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     languageOptions: {
-      parser: tsParser,
+      parser: tsparser,
       parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
         ecmaFeatures: {
-          jsx: true
-        }
+          jsx: true,
+        },
+        ecmaVersion: "latest",
+        sourceType: "module",
       },
       globals: {
-        document: 'readonly',
-        window: 'readonly',
-        global: 'readonly'
-      }
+        document: "readonly",
+        window: "readonly",
+        global: "readonly",
+      },
     },
     plugins: {
-      '@typescript-eslint': tsPlugin,
-      'react': reactPlugin,
-      'react-hooks': reactHooksPlugin
+      "@typescript-eslint": tseslint,
+      react: reactplugin,
     },
     rules: {
-      ...tsPlugin.configs.recommended.rules,
-      ...reactPlugin.configs.recommended.rules,
-      ...reactHooksPlugin.configs.recommended.rules,
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
-      '@typescript-eslint/no-explicit-any': 'off'
+      ...tseslint.configs.recommended.rules,
+      ...reactplugin.configs.recommended.rules,
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
     settings: {
       react: {
-        version: 'detect'
-      }
-    }
+        version: "detect",
+      },
+    },
   },
   {
-    files: ['**/*.test.{ts,tsx}', '**/setupTests.ts'],
+    files: ["**/*.test.{ts,tsx}", "**/setupTests.ts"],
     languageOptions: {
       globals: {
-        describe: 'readonly',
-        test: 'readonly',
-        expect: 'readonly',
-        beforeAll: 'readonly',
-        afterAll: 'readonly',
-        jest: 'readonly'
-      }
-    }
-  }
-]; 
+        describe: "readonly",
+        test: "readonly",
+        expect: "readonly",
+        beforeAll: "readonly",
+        afterAll: "readonly",
+        jest: "readonly",
+      },
+    },
+  },
+  {
+    ignores: ["dist/*", "node_modules/*"],
+  },
+];

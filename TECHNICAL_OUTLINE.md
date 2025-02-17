@@ -1,6 +1,7 @@
 # D&D Character Builder - Technical Outline
 
 ## Project Structure
+
 ```
 dnd-character-builder/
 ├── .venv/                     # Python virtual environment
@@ -65,7 +66,9 @@ dnd-character-builder/
 ## Implementation Plan
 
 ### Stage 0: Project Setup and Infrastructure
+
 1. Development Environment Setup
+
    - Initialize Git repository with .gitignore
    - Create project directory structure
    - Set up Python 3.12 virtual environment (.venv)
@@ -73,6 +76,7 @@ dnd-character-builder/
    - Set up linting and formatting tools (black, isort, eslint, prettier)
 
 2. Backend Foundation
+
    - Initialize FastAPI application structure
    - Configure SQLite database with SQLAlchemy
    - Set up database migrations with Alembic
@@ -82,6 +86,7 @@ dnd-character-builder/
    - Create basic health check endpoints
 
 3. Frontend Foundation
+
    - Initialize Vite + React + TypeScript project
    - Set up Material-UI with custom D&D theme
    - Configure React Router for navigation
@@ -96,7 +101,9 @@ dnd-character-builder/
    - Set up development deployment pipeline
 
 ### Stage 1: Character Creation
+
 1. Data Models and Schemas
+
    - Create SQLAlchemy models:
      - Race and Subrace
      - Class and Subclass
@@ -108,6 +115,7 @@ dnd-character-builder/
    - Create database migrations
 
 2. Core Backend Services
+
    - Character creation service
    - Ability score calculation service
    - Proficiency calculation service
@@ -115,6 +123,7 @@ dnd-character-builder/
    - Mock data service for testing
 
 3. API Endpoints
+
    - Character creation endpoints
    - Race and subrace selection
    - Class and subclass selection
@@ -123,6 +132,7 @@ dnd-character-builder/
    - Skills and proficiency management
 
 4. Frontend Implementation
+
    - Character creation wizard component
    - Race selection interface
    - Class selection interface
@@ -139,7 +149,9 @@ dnd-character-builder/
    - End-to-end character creation flow tests
 
 ### Stage 2: Character Sheet
+
 1. Data Models Extension
+
    - Add models for:
      - Hit points and hit dice
      - Death saves
@@ -149,6 +161,7 @@ dnd-character-builder/
    - Create migrations for model changes
 
 2. Backend Services
+
    - Character sheet service
    - HP and death save management
    - Modifier calculation service
@@ -156,12 +169,14 @@ dnd-character-builder/
    - Character trait management
 
 3. API Endpoints
+
    - Character sheet retrieval
    - HP and death save updates
    - Dice rolling endpoints
    - Trait and feature management
 
 4. Frontend Implementation
+
    - Character sheet layout component
    - Dynamic ability modifier display
    - Interactive HP management
@@ -178,7 +193,9 @@ dnd-character-builder/
    - Accessibility testing
 
 ### Stage 3: Character Progression
+
 1. Data Models Extension
+
    - Equipment and inventory models
    - Spell models and slots
    - Level progression tracking
@@ -186,6 +203,7 @@ dnd-character-builder/
    - Create migrations
 
 2. Backend Services
+
    - Equipment management service
    - Inventory tracking service
    - Encumbrance calculation service
@@ -194,6 +212,7 @@ dnd-character-builder/
    - Multiclass rules service
 
 3. API Endpoints
+
    - Equipment CRUD operations
    - Spell management endpoints
    - Level progression endpoints
@@ -201,6 +220,7 @@ dnd-character-builder/
    - Character advancement validation
 
 4. Frontend Implementation
+
    - Equipment management interface
    - Inventory tracking system
    - Spell management interface
@@ -216,13 +236,16 @@ dnd-character-builder/
    - Frontend flow tests
 
 ### Stage 4: Character Management
+
 1. Data Models Extension
+
    - User account models
    - Character storage models
    - UI preferences models
    - Create migrations
 
 2. Backend Services
+
    - PDF generation service
    - Character export/import service
    - User account service
@@ -230,6 +253,7 @@ dnd-character-builder/
    - UI customization service
 
 3. API Endpoints
+
    - PDF export endpoints
    - Character import/export
    - User account management
@@ -237,6 +261,7 @@ dnd-character-builder/
    - File storage operations
 
 4. Frontend Implementation
+
    - Character list interface
    - PDF export interface
    - Character import/export UI
@@ -253,19 +278,23 @@ dnd-character-builder/
    - Storage management tests
 
 ### Beyond Stage 4 Planning
+
 1. DM Tools Foundation
+
    - Campaign management models
    - Encounter builder models
    - Initiative tracker
    - DM screen customization
 
 2. Homebrew Content
+
    - Custom content models
    - Validation systems
    - Content sharing system
    - Version control for homebrew
 
 3. World Wiki
+
    - Wiki page models
    - Content management system
    - Search and indexing
@@ -280,6 +309,7 @@ dnd-character-builder/
 ## Dependencies
 
 ### Backend Dependencies
+
 ```
 fastapi>=0.104.0
 uvicorn>=0.24.0
@@ -299,6 +329,7 @@ mypy>=1.6.1
 ```
 
 ### Frontend Dependencies
+
 ```
 react>=18.2.0
 @mui/material>=5.14.0
@@ -315,7 +346,9 @@ vite>=5.0.0
 ## Testing Strategy
 
 ### Unit Tests
+
 1. Backend Services
+
    - Character creation validation
    - Ability score calculations
    - Proficiency bonus calculations
@@ -332,7 +365,9 @@ vite>=5.0.0
    - Calculations and display logic
 
 ### Integration Tests
+
 1. API Endpoints
+
    - Character CRUD operations
    - Sourcebook management
    - User authentication
@@ -347,6 +382,7 @@ vite>=5.0.0
    - Form submissions
 
 ### End-to-End Tests
+
 - Complete character creation flow
 - Character management workflow
 - Sourcebook import process
@@ -354,19 +390,23 @@ vite>=5.0.0
 - Character export/import process
 
 ## Code Quality Standards
+
 1. Style Guidelines
+
    - Python: PEP 8 compliance
    - TypeScript: ESLint + Prettier configuration
    - Consistent naming conventions
    - Documentation requirements
 
 2. Performance Considerations
+
    - Lazy loading for large datasets
    - Caching strategies
    - API response optimization
    - Bundle size optimization
 
 3. Security Measures
+
    - Input validation
    - Authentication/Authorization
    - CORS configuration
@@ -380,19 +420,23 @@ vite>=5.0.0
    - Color contrast requirements
 
 ## Future Considerations
+
 1. Scalability
+
    - Database optimization
    - Caching layer
    - API versioning
    - Microservices architecture
 
 2. Feature Expansion
+
    - DM tools integration
    - Campaign management
    - Combat tracker
    - Custom content creation
 
 3. Integration Possibilities
+
    - Mobile app development
    - PDF export/import
 

@@ -1,7 +1,7 @@
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 // Polyfill for TextEncoder/TextDecoder
-if (typeof global.TextEncoder === 'undefined') {
+if (typeof global.TextEncoder === "undefined") {
   global.TextEncoder = function TextEncoder() {
     return {
       encode: function encode(str: string): Uint8Array {
@@ -10,17 +10,17 @@ if (typeof global.TextEncoder === 'undefined') {
           arr[i] = str.charCodeAt(i);
         }
         return arr;
-      }
+      },
     };
   } as any;
 }
 
-if (typeof global.TextDecoder === 'undefined') {
+if (typeof global.TextDecoder === "undefined") {
   global.TextDecoder = function TextDecoder() {
     return {
       decode: function decode(arr: Uint8Array): string {
         return String.fromCharCode.apply(null, Array.from(arr));
-      }
+      },
     };
   } as any;
 }
@@ -32,4 +32,4 @@ beforeAll(() => {
 
 afterAll(() => {
   // Clean up any test environment variables or global mocks
-}); 
+});

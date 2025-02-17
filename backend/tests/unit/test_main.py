@@ -1,4 +1,5 @@
 """Unit tests for main module."""
+
 from unittest.mock import patch
 
 import pytest
