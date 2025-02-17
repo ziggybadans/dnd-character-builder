@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main, develop, staging ]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   frontend-validation:
     runs-on: ubuntu-latest
@@ -36,9 +40,10 @@ jobs:
       run: npm test -- --coverage --passWithNoTests
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v4.0.1
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
         file: ./frontend/coverage/coverage-final.json
         flags: frontend
         fail_ci_if_error: false

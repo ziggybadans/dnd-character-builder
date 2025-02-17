@@ -3,7 +3,6 @@ uvicorn==0.34.0
 sqlalchemy==2.0.0
 pydantic==2.10.6
 pydantic-settings==2.1.0
-python-jose==3.3.0
 passlib==1.7.4
 python-multipart==0.0.18
 aiofiles==23.2.1

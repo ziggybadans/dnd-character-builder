@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest --no-watch",
+    "test": "jest --coverage --coverageReporters=json-summary --coverageReporters=json",
     "test:watch": "jest --watch",
     "format": "prettier --write \"src/**/*.{ts,tsx}\""
   },
@@ -44,6 +44,7 @@
     "@mui/material": "^5.15.7",
     "@tanstack/react-query": "^5.18.1",
     "axios": "^1.6.7",
+    "esbuild": "^0.25.0",
     "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
