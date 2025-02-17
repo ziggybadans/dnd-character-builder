@@ -1,9 +1,9 @@
 """Unit tests for main module."""
-import pytest
-from fastapi.testclient import TestClient
 from unittest.mock import patch
 
+import pytest
 from app.main import app
+from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
@@ -26,7 +26,7 @@ def test_log_requests_middleware():
     """Test that the log requests middleware processes requests correctly."""
     response = client.get("/")  # The middleware will log this request
     assert response.status_code == 200  # Verify the request was processed
-    
+
     # The middleware should have logged the request and response
     # We can't directly test the logging output, but we can verify
     # the middleware didn't interfere with the response
@@ -51,16 +51,17 @@ def test_cors_middleware():
 
 def test_main_startup():
     """Test the main application startup code."""
-    with patch('uvicorn.run') as mock_run:
+    with patch("uvicorn.run") as mock_run:
         # Execute the __main__ block code
         import app.main
-        
+
         # Set __name__ to "__main__" and run the startup code
-        with patch.object(app.main, '__name__', '__main__'):
+        with patch.object(app.main, "__name__", "__main__"):
             app.main.app.router  # Access router to trigger startup events
             if app.main.__name__ == "__main__":
                 import uvicorn
+
                 uvicorn.run(app.main.app, host="0.0.0.0", port=8000)
-        
+
         # Verify uvicorn.run was called with correct parameters
-        mock_run.assert_called_once_with(app.main.app, host="0.0.0.0", port=8000) 
+        mock_run.assert_called_once_with(app.main.app, host="0.0.0.0", port=8000)

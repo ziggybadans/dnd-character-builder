@@ -1,8 +1,7 @@
 """Unit tests for database module."""
 import pytest
-from sqlalchemy.orm import Session
-
 from app.database import get_db
+from sqlalchemy.orm import Session
 
 
 def test_get_db_yields_session():
@@ -21,16 +20,16 @@ def test_get_db_session_lifecycle():
     db_generator = get_db()
     db = next(db_generator)
     assert isinstance(db, Session)
-    
+
     # Session should be active after creation
     assert db.is_active
-    
+
     # Simulate end of request context
     try:
         next(db_generator)
     except StopIteration:
         pass
-    
+
     # Session should be closed
     with pytest.raises(Exception):
         db.execute("SELECT 1")
@@ -41,7 +40,7 @@ def test_get_db_handles_exceptions():
     db_generator = get_db()
     db = next(db_generator)
     assert isinstance(db, Session)
-    
+
     # Simulate an exception during request handling
     with pytest.raises(Exception, match="Test exception"):
         try:
@@ -51,7 +50,7 @@ def test_get_db_handles_exceptions():
                 next(db_generator)
             except StopIteration:
                 pass
-    
+
     # Session should be closed
     with pytest.raises(Exception):
-        db.execute("SELECT 1") 
+        db.execute("SELECT 1")
