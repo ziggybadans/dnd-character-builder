@@ -7,7 +7,7 @@ on:
     branches: [ main, develop, staging ]
 
 jobs:
-  test:
+  backend-validation:
     runs-on: ubuntu-latest
     defaults:
       run:
