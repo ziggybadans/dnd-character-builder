@@ -39,7 +39,7 @@ jobs:
       uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./coverage.xml
+        files: coverage.xml
         flags: backend
         fail_ci_if_error: true
 
@@ -70,6 +70,6 @@ jobs:
       uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./coverage/coverage-final.json
+        files: coverage/coverage-final.json
         flags: frontend
         fail_ci_if_error: true
