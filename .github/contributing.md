@@ -16,15 +16,15 @@ The project uses a multi-branch workflow:
 - Bug fixes: `fix/bug-name`
 - Documentation: `docs/change-description`
 - Releases: `release/version-number`
+- Chores: `chore/chore-name`
 
 ## Development Workflow
 
-1. Create a new branch from `develop`
+1. Create a new branch from `develop` or `staging`
 2. Make changes following the code style guidelines
 3. Run tests and ensure all checks pass
-4. Merge changes back to `develop`
-5. When ready for release, merge to `staging` for testing
-6. After testing, merge to `main` for production
+4. Merge changes back to `develop` or `staging`
+5. After testing, merge to `main` for production
 
 ### Before Merging
 
