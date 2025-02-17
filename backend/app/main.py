@@ -45,7 +45,7 @@ app.add_exception_handler(Exception, generic_exception_handler)
 MiddlewareCallable = Callable[[Request], Awaitable[Response]]
 
 
-@app.middleware("http")  # type: ignore
+@app.middleware("http")  # type: ignore[misc]
 async def log_requests(request: Request, call_next: MiddlewareCallable) -> Response:
     """Log all incoming requests."""
     logger.info(f"Incoming {request.method} request to {request.url}")
@@ -54,7 +54,7 @@ async def log_requests(request: Request, call_next: MiddlewareCallable) -> Respo
     return response
 
 
-@app.get("/")  # type: ignore
+@app.get("/")  # type: ignore[misc]
 async def root() -> JSONResponse:
     """Root endpoint.
 
@@ -64,7 +64,7 @@ async def root() -> JSONResponse:
     return JSONResponse({"message": "D&D Character Builder API", "version": "1.0.0"})
 
 
-@app.get("/health")  # type: ignore
+@app.get("/health")  # type: ignore[misc]
 async def health_check() -> JSONResponse:
     """Health check endpoint.
 
