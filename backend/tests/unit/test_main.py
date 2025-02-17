@@ -2,9 +2,9 @@
 
 from unittest.mock import patch
 
-import pytest
-from app.main import app
-from fastapi.testclient import TestClient
+import pytest  # type: ignore
+from app.main import app  # type: ignore
+from fastapi.testclient import TestClient  # type: ignore
 
 client = TestClient(app)
 
@@ -54,13 +54,13 @@ def test_main_startup() -> None:
     """Test the main application startup code."""
     with patch("uvicorn.run") as mock_run:
         # Execute the __main__ block code
-        import app.main
+        import app  # type: ignore
 
         # Set __name__ to "__main__" and run the startup code
         with patch.object(app.main, "__name__", "__main__"):
             app.main.app.router  # Access router to trigger startup events
             if app.main.__name__ == "__main__":
-                import uvicorn
+                import uvicorn  # type: ignore
 
                 uvicorn.run(app.main.app, host="0.0.0.0", port=8000)
 

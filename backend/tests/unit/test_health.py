@@ -1,7 +1,7 @@
 """Unit tests for health check endpoint."""
 
-from app.main import app
-from fastapi.testclient import TestClient
+from app.main import app  # type: ignore
+from fastapi.testclient import TestClient  # type: ignore
 
 client = TestClient(app)
 
