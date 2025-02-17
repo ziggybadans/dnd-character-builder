@@ -54,3 +54,27 @@ logs/
 backend/logs/
 frontend/logs/
 app.log*
+
+# SQLite database files
+*.db
+
+# Virtual environment
+.venv/
+venv/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Environment variables
+.env
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# MyPy cache
+.mypy_cache/
+
+# Pytest cache
+.pytest_cache/

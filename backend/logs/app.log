@@ -133,3 +133,27 @@
 2025-02-17 17:20:55,921 - dnd_character_builder - INFO - Returning 200 response
 2025-02-17 17:20:55,922 - dnd_character_builder - INFO - Incoming OPTIONS request to http://testserver/
 2025-02-17 17:20:55,922 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:18:52,417 - dnd_character_builder - INFO - Incoming GET request to http://testserver/health
+2025-02-17 22:18:52,417 - dnd_character_builder - INFO - Health check endpoint called
+2025-02-17 22:18:52,417 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:18:52,419 - dnd_character_builder - INFO - Incoming GET request to http://testserver/
+2025-02-17 22:18:52,419 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:18:52,421 - dnd_character_builder - INFO - Incoming GET request to http://testserver/health
+2025-02-17 22:18:52,421 - dnd_character_builder - INFO - Health check endpoint called
+2025-02-17 22:18:52,421 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:18:52,423 - dnd_character_builder - INFO - Incoming GET request to http://testserver/
+2025-02-17 22:18:52,423 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:18:52,425 - dnd_character_builder - INFO - Incoming OPTIONS request to http://testserver/
+2025-02-17 22:18:52,425 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:19:32,856 - dnd_character_builder - INFO - Incoming GET request to http://testserver/health
+2025-02-17 22:19:32,856 - dnd_character_builder - INFO - Health check endpoint called
+2025-02-17 22:19:32,856 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:19:32,859 - dnd_character_builder - INFO - Incoming GET request to http://testserver/
+2025-02-17 22:19:32,859 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:19:32,861 - dnd_character_builder - INFO - Incoming GET request to http://testserver/health
+2025-02-17 22:19:32,861 - dnd_character_builder - INFO - Health check endpoint called
+2025-02-17 22:19:32,861 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:19:32,863 - dnd_character_builder - INFO - Incoming GET request to http://testserver/
+2025-02-17 22:19:32,864 - dnd_character_builder - INFO - Returning 200 response
+2025-02-17 22:19:32,865 - dnd_character_builder - INFO - Incoming OPTIONS request to http://testserver/
+2025-02-17 22:19:32,865 - dnd_character_builder - INFO - Returning 200 response

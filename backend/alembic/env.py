@@ -1,20 +1,11 @@
+"""Alembic environment configuration."""
+
 import os
-import sys
 from logging.config import fileConfig
-from pathlib import Path
 
-from alembic import context  # type: ignore
+from alembic import context
+from app.models import Base
 from sqlalchemy import engine_from_config, pool
-
-# Add the parent directory to the Python path
-sys.path.append(str(Path(__file__).resolve().parent.parent))
-
-from app.config import get_settings
-
-# Import our models
-from app.database import Base
-
-settings = get_settings()
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -25,9 +16,6 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Set the database URL in the alembic.ini file
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
-
 # add your model's MetaData object here
 # for 'autogenerate' support
 target_metadata = Base.metadata
@@ -36,6 +24,11 @@ target_metadata = Base.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
+
+def get_url():
+    """Get database URL from environment variable."""
+    return os.getenv("DATABASE_URL", "sqlite:///./data/dnd_character_builder.db")
 
 
 def run_migrations_offline() -> None:
@@ -50,7 +43,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    url = get_url()
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -69,8 +62,12 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
+    configuration = config.get_section(config.config_ini_section)
+    if configuration is not None:
+        configuration["sqlalchemy.url"] = get_url()
+
     connectable = engine_from_config(
-        config.get_section(config.config_ini_section, {}),
+        configuration or {},
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )
