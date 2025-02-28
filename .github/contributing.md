@@ -20,11 +20,17 @@ The project uses a multi-branch workflow:
 
 ## Development Workflow
 
-1. Create a new branch from `develop` or `staging`
-2. Make changes following the code style guidelines
-3. Run tests and ensure all checks pass
-4. Merge changes back to `develop` or `staging`
-5. After testing, merge to `main` for production
+1. Create a new release branch from `develop`
+2. Create a new feature branch from the release branch
+3. Make changes following the code style guidelines
+4. Run local tests and ensure all checks pass
+5. Merge changes back to the feature branch
+6. Repeat for each feature, testing if needed as you go.
+7. When all features are complete, merge the feature branch back into the release branch.
+8. Test locally, and if successful, merge the release branch into `develop`.
+9. Wait for CI to run and test the develop branch.
+10. If develop is successful, create a pull request into `staging`.
+11. If staging is successful, create a pull request into `main`.
 
 ### Before Merging
 
